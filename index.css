@@ -1,0 +1,31 @@
+body {
+  background-color: bisque;
+  margin: 0;
+}
+.card {
+  text-align: center;
+  border: grey;
+  width: 15rem;
+  height: 25rem;
+  display: inline-grid;
+  margin: 1rem 2rem;
+}
+.product-image {
+  justify-self: center;
+  height: 12rem;
+  width: auto;
+  border: grey;
+}
+img:hover {
+  opacity: 2;
+}
+a {
+  color: hotpink;
+}
+#main-container {
+  padding: 1rem;
+  width: stretch;
+  height: auto;
+  /* background: ivory; */
+  opacity: 0.8;
+}
