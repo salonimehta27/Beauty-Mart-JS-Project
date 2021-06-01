@@ -3,12 +3,31 @@ document.addEventListener("DOMContentLoaded",()=>{
     // findProduct.id="findBrand"
 //fetch("https://makeup-api.herokuapp.com/api/v1/products.json").then(resp=>resp.json()).then(product=>console.log(product))
     
-function renderData()
-     {
-        fetch("https://makeup-api.herokuapp.com/api/v1/products.json")
+
+function fetchNyx()
+{
+        fetch("https://makeup-api.herokuapp.com/api/v1/products.json?brand=nyx")
         .then(resp=>resp.json()).then(product=>displayData(product))
      }
-renderData()
+fetchNyx()
+function fetchMaybelline()
+{
+    fetch("https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline")
+    .then(resp=>resp.json()).then(product=>displayData(product))
+}
+fetchMaybelline()
+function fetchClinique()
+{
+    fetch("https://makeup-api.herokuapp.com/api/v1/products.json?brand=clinique")
+    .then(resp=>resp.json()).then(product=>displayData(product))
+}
+fetchClinique()
+function fetchMilani()
+{
+    fetch("https://makeup-api.herokuapp.com/api/v1/products.json?brand=milani")
+    .then(resp=>resp.json()).then(product=>displayData(product))
+}
+fetchMilani()
 function displayData(product)
 {
     product.forEach(element => {
@@ -35,13 +54,18 @@ function createCards(product){
          img.className="product-image"
          const p=document.createElement('p');
          p.innerHTML=`Product description: <br> ${product.description}`;
-         const ul=document.createElement("ul");
-        //  product.forEach((element)=>{
-        //      const li= document.createElement('li');
-        //      li.innerText=element.product_colors.hex_value;
-        //      ul.append(li);
-        //  })
-         mainContainer.append(img,p,ul);
+         const btn=document.createElement("button")
+         btn.innerText="⬅️"
+         btn.className="arrow";
+         btn.addEventListener("click",()=>
+         { 
+             mainContainer.innerHTML="";
+            fetchNyx()
+            fetchMaybelline()
+            fetchClinique()
+            fetchMilani
+         })
+         mainContainer.append(img,p,btn);
      })
     const p=document.createElement("p")
     p.innerText=` $ ${product.price} `;
@@ -54,3 +78,7 @@ function createCards(product){
 }
 
 })
+ // Promise.all([nyx,maybelline,clinique].map(brand => 
+        //     fetch(`https://makeup-api.herokuapp.com/api/v1/products.json?${brand}`)
+        //     .then(resp => resp.json())
+        //   )).then(product=>displayData(product));
