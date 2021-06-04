@@ -1,0 +1,42 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "review": "some comment"
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "review": "amazing product!",
+      "id": 4
+    },
+    {
+      "review": "color is so pretty!",
+      "id": 5
+    },
+    {
+      "review": "amazing",
+      "id": 6
+    },
+    {
+      "review": "beautiful",
+      "id": 7
+    },
+    {
+      "review": "aamizn",
+      "id": 8
+    },
+    {
+      "review": "amazing",
+      "id": 9
+    },
+    {
+      "review": "a",
+      "id": 10
+    }
+  ]
+}

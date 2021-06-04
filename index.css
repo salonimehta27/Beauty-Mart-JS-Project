@@ -1,14 +1,15 @@
 body {
-  background-color: bisque;
+  background-color: white;
   margin: 0;
 }
-.card {
+div.card {
   text-align: center;
-  border: grey;
+  border-color: grey solid 1px;
   width: 15rem;
   height: 25rem;
   display: inline-grid;
   margin: 1rem 2rem;
+  box-shadow: 3px;
 }
 .product-image {
   justify-self: center;
@@ -22,10 +23,59 @@ img:hover {
 a {
   color: hotpink;
 }
-#main-container {
+div #main-container {
   padding: 1rem;
   width: stretch;
   height: auto;
   /* background: ivory; */
   opacity: 0.8;
+}
+/* .navbar {
+  width: stretch;
+  height: 50px;
+  background-color: thistle;
+  display: inline-grid;
+} */
+a.homeLink {
+  float: right;
+  color: cornsilk;
+  size: 35px;
+}
+.search {
+  float: right;
+  padding-right: 20px;
+}
+.searchBtn {
+  float: right;
+  padding-right: 20px;
+}
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 8vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: thistle;
+}
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 20%;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-size: 14px;
+}
+.nav-links li {
+  list-style: none;
+}
+.search-nav {
+  display: flex;
+  width: 20%;
+}
+.logo img {
+  width: 200px;
+  height: 90px;
+}
+.nav-links a {
+  text-decoration: none;
 }
