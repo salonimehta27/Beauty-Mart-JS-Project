@@ -10,18 +10,22 @@ div.card {
   display: inline-grid;
   margin: 1rem 2rem;
   box-shadow: 3px;
+  border: 6px;
+  border-style: double;
+  border-color: goldenrod;
 }
 .product-image {
   justify-self: center;
   height: 12rem;
   width: auto;
-  border: grey;
 }
 img:hover {
   opacity: 2;
 }
 a {
   color: hotpink;
+  text-decoration: none;
+  display: block;
 }
 div #main-container {
   padding: 1rem;
@@ -78,4 +82,7 @@ nav {
 }
 .nav-links a {
   text-decoration: none;
+}
+.comment-box {
+  display: block;
 }
