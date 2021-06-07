@@ -1,174 +1,79 @@
 {
   "reviews": [
     {
-      "id": 1,
-      "review": "some comment"
-    },
-    {
-      "id": 2
-    },
-    {
-      "id": 3
-    },
-    {
-      "review": "amazing product!",
-      "id": 4
-    },
-    {
-      "review": "color is so pretty!",
-      "id": 5
-    },
-    {
-      "review": "amazing",
-      "id": 6
-    },
-    {
-      "review": "beautiful",
-      "id": 7
-    },
-    {
-      "review": "aamizn",
-      "id": 8
-    },
-    {
-      "review": "amazing",
-      "id": 9
-    },
-    {
-      "review": "a",
-      "id": 10
-    },
-    {
       "review": "great!",
-      "id": 11
-    },
-    {
-      "review": "great!",
-      "id": 12
-    },
-    {
-      "review": "great",
-      "id": 13
-    },
-    {
-      "review": "lovely color!",
-      "id": 14
-    },
-    {
-      "review": "great",
-      "id": 15
-    },
-    {
-      "review": "tttt",
+      "productId": 436,
       "id": 16
     },
     {
-      "review": "beautiful!",
+      "review": "beautiful",
+      "productId": 435,
       "id": 17
     },
     {
-      "review": "beautiful color",
+      "review": "check!",
+      "productId": 258,
       "id": 18
     },
     {
-      "review": "fhjgj",
+      "review": "sss",
+      "productId": 435,
       "id": 19
     },
     {
-      "review": "fhjgj",
+      "review": "pretty!",
+      "productId": 435,
       "id": 20
     },
     {
-      "review": "nbkyuhj",
+      "review": "so pretty",
+      "productId": 436,
       "id": 21
     },
     {
-      "review": "nbkyuhj",
+      "review": "great",
+      "productId": 435,
       "id": 22
     },
     {
-      "review": "nbkyuhj",
+      "review": "great!",
+      "productId": 258,
       "id": 23
     },
     {
-      "review": "gy6ui909",
+      "review": "superrrr",
+      "productId": 435,
       "id": 24
     },
     {
-      "review": "gioipo-",
+      "review": "gtkl",
+      "productId": 215,
       "id": 25
     },
     {
-      "review": "gm,.",
+      "review": "superrrr",
+      "productId": 485,
       "id": 26
     },
     {
-      "review": "juj",
+      "review": "superrrr",
+      "productId": 485,
       "id": 27
     },
     {
-      "review": "juj",
+      "review": "superrrr",
+      "productId": 485,
       "id": 28
     },
     {
-      "review": "juj",
+      "review": "hjkjl;",
+      "productId": 485,
       "id": 29
     },
     {
-      "review": "juj",
+      "review": "superrrr",
+      "productId": 485,
       "id": 30
-    },
-    {
-      "review": "juj",
-      "id": 31
-    },
-    {
-      "review": "dedd",
-      "id": 32
-    },
-    {
-      "review": "dedd",
-      "id": 33
-    },
-    {
-      "review": "dedd",
-      "id": 34
-    },
-    {
-      "review": "",
-      "id": 35
-    },
-    {
-      "review": "jnhpiop",
-      "id": 36
-    },
-    {
-      "review": "frref",
-      "id": 37
-    },
-    {
-      "review": "",
-      "id": 38
-    },
-    {
-      "review": "fee",
-      "id": 39
-    },
-    {
-      "review": "great!",
-      "id": 40
-    },
-    {
-      "review": "frf",
-      "id": 41
-    },
-    {
-      "review": "beautiful",
-      "id": 42
-    },
-    {
-      "review": "great!",
-      "id": 43
     }
   ]
 }

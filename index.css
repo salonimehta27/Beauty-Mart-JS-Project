@@ -40,18 +40,33 @@ div #main-container {
   background-color: thistle;
   display: inline-grid;
 } */
-a.homeLink {
+.homeLink {
   float: right;
   color: cornsilk;
-  size: 35px;
+  size: 50px;
+  height: 30px;
+  font-size: larger;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-.search {
+/* .search {
   float: right;
   padding-right: 20px;
 }
 .searchBtn {
   float: right;
   padding-right: 20px;
+} */
+#btnClick {
+  width: 45px;
+  height: 30px;
+}
+#searchId {
+  width: 150px;
+  height: 30px;
+}
+#searchbar {
+  float: right;
+  letter-spacing: 0px;
 }
 nav {
   display: flex;

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 //fetch("https://makeup-api.herokuapp.com/api/v1/products.json").then(resp=>resp.json()).then(product=>console.log(product)) 
 // created individual fetch requests to fetch only certain brands
 const baseURL="https://makeup-api.herokuapp.com/api/v1/products.json?brand=";
-
+// multiple fetch requests for fetching individual brands 
 function fetchNyx()
 {
     fetch(`${baseURL}nyx`)
@@ -50,77 +50,147 @@ function createCards(product){
     img.src=product.image_link;
     img.className="product-image"
 
-     aTag.addEventListener("click",()=>
-     {  // all of these work ****
-         //  add to your blog post different ways to empty the innerHTML
-        while (mainContainer.firstChild) mainContainer.removeChild(mainContainer.firstChild);
-        // mainContainer.querySelectorAll("*").forEach(el => el.remove())
-        mainContainer.innerHTML="";
-         const name=document.createElement("h2")
-         name.innerText=product.name;
+        aTag.addEventListener("click",()=>
+        {  // **** all of these work ****
+            //  add to your blog post different ways to empty the innerHTML
+            // while (mainContainer.firstChild) mainContainer.removeChild(mainContainer.firstChild);
+            // mainContainer.querySelectorAll("*").forEach(el => el.remove())
+            mainContainer.innerHTML="";
 
-         const img=document.createElement("img");
-         img.src=product.image_link;
-         img.className="product-image"
+            const name=document.createElement("h2")
+            name.innerText=product.name;
+            name.className="product-name"
 
-         const p=document.createElement('p');
-         p.innerHTML=`Product description: <br> ${product.description}`;
+            const img=document.createElement("img");
+            img.src=product.image_link;
+            img.className="product-image"
 
-        const commentForm=document.createElement("form")
-        commentForm.id="commentInput";
+            const p=document.createElement('p');
+            p.innerHTML=`Product description: <br> ${product.description}`;
+            /// creates a form for reviews 
+                const commentForm=document.createElement("form")
+                commentForm.id="commentInput";
 
-        const commentInput=document.createElement("input")
-        commentInput.type="text";
-        commentInput.placeholder="Enter your Review";
-        
-        const submitReview=document.createElement("button");
-        submitReview.innerText="Submit Review";
+                const commentInput=document.createElement("input")
+                commentInput.id="enter-comment"
+                commentInput.type="text";
+                commentInput.placeholder="Enter your Review";
+                
+                const submitReview=document.createElement("button");
+                submitReview.innerText="Submit Review";
 
-        commentForm.append(commentInput,submitReview);
-
-            commentForm.addEventListener("submit",(e)=>
-                { 
+                commentForm.append(commentInput,submitReview);
+                commentForm.addEventListener("submit",(e)=>
+                    { 
                     e.preventDefault();
-                    const commentSection=document.createElement("p");
-                        p.className="comment-box"
-                        commentSection.innerHTML=commentInput.value;
-                        mainContainer.append(commentSection);
-                  product.forEach(()=>{
-                      fetch(`http://localhost:3000/reviews/${product.id}`,{
-                   method:"POST",
-                   headers:{
-                   "Content-Type":"application/json",
-                   "accept":"application/json"
-                    },
-                   body:JSON.stringify({
-                    "review":commentInput.value
-                       })
-                    }).then(resp=>resp.json())
-                    e.target.reset();
-                })
-                })
-          mainContainer.append(name,img,p,commentForm);
-          
-     })
+                    renderComments(commentInput.value)
+                    // const mainContainer=document.getElementById("main-container");
+                   // mainContainer.append(commentSection);
+                        fetch(`http://localhost:3000/reviews/`,{
+                        method:"POST",
+                        headers:{
+                        "Content-Type":"application/json",
+                        "accept":"application/json"
+                        },
+                        body:JSON.stringify({
+                        "review":commentInput.value,
+                        "productId":product.id
+                        })
+                        }).then(resp=>resp.json())
+                        e.target.reset();
+                        
+                    })
+                    fetchComments();
+                    // reviews.map(x=>x.productId===product.id)
+                    
+            mainContainer.append(name,img,p,commentForm);
+        }) 
+     /// aTag ends here with the link listener
+     ///************************************ 
+     
+     // adds the product price
     const p=document.createElement("p")
     p.innerText=` $ ${product.price} `;
-
+    
+     // adds the add to cart button
     const addToCart=document.createElement("button")
     addToCart.className="addCartBtn";
     addToCart.innerText="ADD TO CART"
-
+        // event listener
         addToCart.addEventListener("click",()=>{
         alert("item has been added to the cart");
-          })
+        })
     
     const h3=document.createElement("h3")
     h3.innerText=`How many users liked: ${product.rating}`;
-
     createDiv.append(aTag,img,p,addToCart,h3);
     mainContainer.append(createDiv);
   
 }
-
+function renderComments(comment)
+{
+    const commentSection=document.createElement("li");
+    commentSection.className="comment-box"
+    const comUL=document.createElement("ul");
+    // const comInput=document.getElementById("enter-comment")
+    commentSection.innerHTML=comment;
+    comUL.append(commentSection);
+    mainContainer.append(comUL);
+}
+function fetchComments()
+{   
+    
+    // const review=e.target.children[0].value;
+    fetch(`http://localhost:3000/reviews`).then(resp=>resp.json()).then(review=>review.map((x)=>{
+        //x.productId===product.id
+   renderComments(x.review)
+       } 
+    ))
+    
+}
+// this function is solely for search button, in this case our search button is an submit button.
+// so a user can either click the button or just hit enter 
+function search()
+{
+    // event listener on the form itself
+    document.getElementById("searchbar").addEventListener("submit",(e)=>
+    {
+        e.preventDefault();
+        const val=e.target.lastElementChild.value.toString();
+        // console.log(val);
+        if(val.toLowerCase()==="nyx")
+        {   
+            mainContainer.innerHTML="";
+            fetchNyx();
+        }
+        else if(val.toLowerCase()==="milani")
+        {
+            mainContainer.innerHTML="";
+            fetchMilani();
+        }
+        else if(val.toLowerCase()==="clinique")
+        {
+            mainContainer.innerHTML="";
+            fetchClinique();
+        }
+        else if(val.toLowerCase()==="maybelline")
+        {
+            mainContainer.innerHTML="";
+            fetchMaybelline();
+        }
+        else 
+        {
+             alert("Please enter correct Brand name");
+        }
+        e.target.reset();
+    })
+}
+search();
+})
+// function getComments()
+// {
+//     fetch("http://localhost:3000/reviews").then(resp=>resp.json())
+// }
 //  const btn=document.createElement("button")
         //  btn.innerText="⬅️"
         //  btn.className="arrow";
@@ -153,7 +223,6 @@ function createCards(product){
 // function buttonClick(){
 //     alert("gtg");
 // }
-})
  // Promise.all([nyx,maybelline,clinique].map(brand => 
         //     fetch(`https://makeup-api.herokuapp.com/api/v1/products.json?${brand=}`)
         //     .then(resp => resp.json())
