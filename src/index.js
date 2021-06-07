@@ -119,8 +119,20 @@ function createCards(product){
         // event listener
         addToCart.addEventListener("click",()=>{
         alert("item has been added to the cart");
+        fetch(`http://localhost:3000/cart`,{
+        method:"POST",
+        headers:{
+        "Content-Type":"application/json",
+        "accept":"application/json"
+        },
+        body:JSON.stringify({
+        "title":product.name,
+        "productId":product.id,
+        "img":product.image_link,
+        "price":product.price
         })
-    
+        }).then(resp=>resp.json())
+    })
     const h3=document.createElement("h3")
     h3.innerText=`How many users liked: ${product.rating}`;
     createDiv.append(aTag,img,p,addToCart,h3);
@@ -128,7 +140,8 @@ function createCards(product){
   
 }
 function renderComments(comment)
-{
+{ 
+    
     const commentSection=document.createElement("li");
     commentSection.className="comment-box"
     const comUL=document.createElement("ul");
@@ -139,14 +152,49 @@ function renderComments(comment)
 }
 function fetchComments()
 {   
-    
     // const review=e.target.children[0].value;
-    fetch(`http://localhost:3000/reviews`).then(resp=>resp.json()).then(review=>review.map((x)=>{
+    fetch(`http://localhost:3000/reviews/`).then(resp=>resp.json()).then(review=>review.map((x)=>{
         //x.productId===product.id
    renderComments(x.review)
        } 
     ))
     
+}
+function renderCart(cart){
+    const h2=document.createElement("h2");
+    h2.innerText=cart.title;
+    const img= document.createElement("img");
+    img.src=cart.img;
+    const p= document.createElement("p");
+    p.innerText=`$ ${cart.price}`
+    const checkout=document.createElement("button");
+    checkout.innerText="Place order for this Item";
+
+    checkout.addEventListener("click",()=>{
+        mainContainer.innerHTML="";
+        const order=document.createElement("h3");
+        order.innerText="YAYYY!! Your order has been placed!!"
+        const h2=document.createElement("h2");
+        h2.innerText="Thank you for shopping with us!"
+        mainContainer.append(order,h2);
+        const ids=cart.id;
+        console.log(cart);
+        fetch(`http://localhost:3000/cart/${ids}`,{
+        method:"DELETE",
+        headers:{
+            "content-type":'application/json'
+        }
+        }).then(resp=>resp.json())
+    })
+    mainContainer.append(h2,img,p,checkout);
+}
+
+/// cart button event
+document.getElementById("cart").addEventListener("click",cart)
+
+function cart()
+{   mainContainer.innerHTML="";
+    fetch(`http://localhost:3000/cart`).then(resp=>resp.json()).then(cart=>cart.forEach(cart=>renderCart(cart)))
 }
 // this function is solely for search button, in this case our search button is an submit button.
 // so a user can either click the button or just hit enter 
@@ -187,6 +235,10 @@ function search()
 }
 search();
 })
+// function addToCart()
+// {
+ 
+// }
 // function getComments()
 // {
 //     fetch("http://localhost:3000/reviews").then(resp=>resp.json())
