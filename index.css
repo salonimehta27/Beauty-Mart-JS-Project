@@ -12,7 +12,7 @@ div.card {
   box-shadow: 3px;
   border: 6px;
   border-style: double;
-  border-color: goldenrod;
+  border-color: rgb(121, 81, 121);
 }
 .product-image {
   justify-self: center;
@@ -23,7 +23,7 @@ img:hover {
   opacity: 2;
 }
 a {
-  color: hotpink;
+  color: rgb(224, 93, 159);
   text-decoration: none;
   display: block;
 }
@@ -31,7 +31,7 @@ div #main-container {
   padding: 1rem;
   width: stretch;
   height: auto;
-  /* background: ivory; */
+
   opacity: 0.8;
 }
 /* .navbar {
@@ -40,14 +40,18 @@ div #main-container {
   background-color: thistle;
   display: inline-grid;
 } */
-.homeLink {
-  float: right;
-  color: cornsilk;
-  size: 50px;
-  height: 30px;
-  font-size: larger;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+/* nav a {
+  display: block;
+  color: rgb(121, 81, 121);
+  text-align: center;
+  padding: 50px 10px;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: bold;
 }
+nav a:hover {
+  color: #29a074;
+} */
 /* .search {
   float: right;
   padding-right: 20px;
@@ -56,17 +60,74 @@ div #main-container {
   float: right;
   padding-right: 20px;
 } */
+
 #btnClick {
-  width: 45px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 20px;
   height: 30px;
 }
+/* #searchId:hover {
+  background-color:wheat
+} */
 #searchId {
   width: 150px;
   height: 30px;
+  margin-top: 40px;
+  border: 0.4em solid rgb(121, 81, 121);
 }
-#searchbar {
+/* #searchbar {
   float: right;
   letter-spacing: 0px;
+} */
+/* nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 8vh;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background-color: thistle;
+  transition: top 500ms ease-in-out;
+} */
+nav.scroll-up,
+nav:focus-within {
+  top: 0;
+}
+
+nav.scroll-down {
+  top: -100%;
+}
+.links {
+  display: flex;
+  margin: 0 -1em;
+}
+
+/* .links a {
+  display: inline-block;
+  margin: 0 1em;
+} */
+/* nav a {
+  color: #0f0f0f;
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+} */
+.logo img {
+  width: 200px;
+  height: 90px;
+}
+.logo {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+.links a {
+  display: inline-block;
+  margin: 0 1em;
 }
 nav {
   display: flex;
@@ -76,28 +137,80 @@ nav {
   font-family: Arial, Helvetica, sans-serif;
   background-color: thistle;
 }
-.nav-links {
+/* .nav-links {
   display: flex;
   justify-content: space-around;
   width: 20%;
+  float: right;
   text-decoration: none;
   letter-spacing: 3px;
   font-size: 14px;
-}
-.nav-links li {
+} */
+/* .nav-links li {
   list-style: none;
-}
-.search-nav {
+} */
+/* .search-nav {
   display: flex;
   width: 20%;
 }
-.logo img {
-  width: 200px;
-  height: 90px;
-}
+
 .nav-links a {
   text-decoration: none;
-}
+} */
 .comment-box {
   display: block;
+}
+.addCartBtn {
+  background-color: #29a074;
+  text-shadow: honeydew;
+  color: aliceblue;
+}
+.deleteItem {
+  background-color: indianred;
+  color: aliceblue;
+  height: 30px;
+  justify-content: space-around;
+  align-items: center;
+}
+.placeOrder {
+  background-color: rgb(70, 110, 29);
+  color: aliceblue;
+  height: 30px;
+  position: absolute;
+  justify-content: space-around;
+  align-items: center;
+}
+.cartImage {
+  height: 70px;
+  width: 70px;
+  align-items: center;
+}
+#cart {
+  /* margin-top: 5px; */
+  font-size: 30px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0 auto;
+  color: #dcfbb4;
+  background-color: rgb(121, 81, 121);
+  border: 0.4em solid #d4f7da;
+  border-radius: 50%;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  width: 4em;
+  height: 4em;
+  line-height: 3em;
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.1), inset 0 0 0 rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+#cart:hover {
+  box-shadow: 0 0 2em rgba(0, 0, 0, 0.1), inset 0 0 1em rgba(0, 0, 0, 0.1);
+  background-color: #29a074;
+  /* padding: 0;
+  border: none;
+  background: none;
+  width: 45px;
+  height: 30px;
+  size: 30px; */
 }
