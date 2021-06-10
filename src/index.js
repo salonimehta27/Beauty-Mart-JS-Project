@@ -159,15 +159,19 @@ function renderComments(comment) // // commentInput.value passed
 }
 function fetchComments(product)// product.id is passed to compare
 {  
-        fetch(`http://localhost:3000/reviews/`).then(resp=>resp.json()).then(review=>review.map((x)=>{
-        if(x.productId===product){
-        renderComments(x.review)}
+        fetch(`http://localhost:3000/reviews/`)
+        .then(resp=>resp.json())
+        .then(review=>review.map((x)=>{
+            if(x.productId===product){
+            renderComments(x.review)}
     }))
 }
 function cart()
 {   
     mainContainer.innerHTML="";
-    fetch(`http://localhost:3000/cart`).then(resp=>resp.json()).then(cart=>cart.map(cart=>renderCart(cart)))
+    fetch(`http://localhost:3000/cart`)
+    .then(resp=>resp.json())
+    .then(cart=>cart.map(cart=>renderCart(cart)))
 }
 document.getElementById("cart").addEventListener("click",cart)
 
@@ -203,39 +207,43 @@ function renderCart(cart)
     {   
         deleteFromCart(cart.id);
         mainContainer.innerHTML="";
-        fetch(`http://localhost:3000/cart`).then(resp=>resp.json()).then(cart=>cart.map(cart=>renderCart(cart)))
+        fetch(`http://localhost:3000/cart`)
+        .then(resp=>resp.json())
+        .then(cart=>cart.map(cart=>renderCart(cart)))
     })
 
     const checkout=document.createElement("button");
         checkout.innerText="Place order for this Item";
         checkout.className="placeOrder"
 
-    checkout.addEventListener("click",()=>{
+        checkout.addEventListener("click",()=>{
 
-        mainContainer.innerHTML="";
-        const order=document.createElement("h3");
-            order.innerText="YAYYY!! Your order has been placed!!"
-        const h2=document.createElement("h2");
-            h2.innerText="Thank you for shopping with us!"
-        const backToCart=document.createElement("button");
-            backToCart.innerText="Back to cart"
-            backToCart.className="backToCart"
-            backToCart.addEventListener("click",()=>
-            {
-                mainContainer.innerHTML="";
-                fetch(`http://localhost:3000/cart`).then(resp=>resp.json()).then(cart=>cart.map(cart=>renderCart(cart)))
-            })
-        const contShop=document.createElement("button");
-            contShop.innerText="Continue Shopping";
-            contShop.className="placeOrder"           // used the same class as for place the order button to style it same
-            contShop.addEventListener("click",()=>{
             mainContainer.innerHTML="";
-            fetchAll();
-            });
-        mainContainer.append(order,h2,backToCart,contShop);
-        const ids=cart.id;
-        deleteFromCart(ids); 
-    })
+            const order=document.createElement("h3");
+                order.innerText="YAYYY!! Your order has been placed!!"
+            const h2=document.createElement("h2");
+                h2.innerText="Thank you for shopping with us!"
+            const backToCart=document.createElement("button");
+                backToCart.innerText="Back to cart"
+                backToCart.className="backToCart"
+                backToCart.addEventListener("click",()=>
+                {
+                    mainContainer.innerHTML="";
+                    fetch(`http://localhost:3000/cart`)
+                    .then(resp=>resp.json())
+                    .then(cart=>cart.map(cart=>renderCart(cart)))
+                })
+            const contShop=document.createElement("button");
+                contShop.innerText="Continue Shopping";
+                contShop.className="placeOrder"           // used the same class as for place the order button to style it same
+                contShop.addEventListener("click",()=>{
+                mainContainer.innerHTML="";
+                fetchAll();
+                });
+            mainContainer.append(order,h2,backToCart,contShop);
+            const ids=cart.id;
+            deleteFromCart(ids); 
+        })
     mainContainer.append(h2,img,p,deleteButton,checkout);
 }
 
