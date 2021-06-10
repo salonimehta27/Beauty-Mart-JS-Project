@@ -27,10 +27,10 @@ function createCards(product)
     createDiv.className="card"
 
     const aTag=document.createElement("a");
-        aTag.href="#"
-        aTag.className="link"
-        aTag.id="aId"
-        aTag.innerHTML=product.name;
+          aTag.href="#"
+          aTag.className="link"
+          aTag.id="aId"
+          aTag.innerHTML=product.name;
 
     function postItemToCart()
     {
@@ -58,48 +58,48 @@ function createCards(product)
         mainContainer.innerHTML="";
 
         const name=document.createElement("h2")
-            name.innerText=product.name;
-            name.className="cartAppear"
+              name.innerText=product.name;
+              name.className="cartAppear"
 
         const img=document.createElement("img");
-            img.src=product.image_link;
-            img.className="imgonA"
+              img.src=product.image_link;
+              img.className="imgonA"
 
         const pr=document.createElement("p")
-            pr.innerText=` $ ${product.price} `;
-            pr.id="price"
-            pr.className="cartAppear"
+              pr.innerText=` $ ${product.price} `;
+              pr.id="price"
+              pr.className="cartAppear"
 
         const addItem=document.createElement("button");
-            addItem.innerText="Add this item to cart"
-            addItem.className="cartAppear"
-            addItem.id="additem"
+              addItem.innerText="Add this item to cart"
+              addItem.className="cartAppear"
+              addItem.id="additem"
 
-            addItem.addEventListener("click",()=>
-        {
-          postItemToCart()
-        })
+              addItem.addEventListener("click",()=>
+              {
+                postItemToCart()
+              })
 
         const p=document.createElement('p');
-            p.innerHTML=`Product description: <br> <br>${product.description}`;
-            p.className="cartAppear";
+              p.innerHTML=`Product description: <br> <br>${product.description}`;
+              p.className="cartAppear";
 
         const productType=document.createElement("p")
-            productType.innerText=`Product Type: ${product.product_type.toUpperCase()}`;
-            productType.className="cartAppear";
+              productType.innerText=`Product Type: ${product.product_type.toUpperCase()}`;
+              productType.className="cartAppear";
             /// creates a form for reviews 
         const commentForm=document.createElement("form")
-            commentForm.id="commentInput";
+              commentForm.id="commentInput";
 
         const commentInput=document.createElement("input")
-            commentInput.id="enter-comment";
-            commentInput.type="text";
-            commentInput.className="cartAppear";
-            commentInput.placeholder="Enter your Review";
+              commentInput.id="enter-comment";
+              commentInput.type="text";
+              commentInput.className="cartAppear";
+              commentInput.placeholder="Enter your Review";
             
         const submitReview=document.createElement("button");
-            submitReview.innerText="Submit Review";
-            submitReview.className="submit-review";
+              submitReview.innerText="Submit Review";
+              submitReview.className="submit-review";
 
         commentForm.append(commentInput,submitReview);
             commentForm.addEventListener("submit",(e)=>
@@ -128,21 +128,21 @@ function createCards(product)
      ///************************************ 
 
         const img=document.createElement("img");
-            img.src=product.image_link;
-            img.className="product-image"
+              img.src=product.image_link;
+              img.className="product-image"
             
      // adds the product price
         const p=document.createElement("p")
-            p.innerText=` $ ${product.price} `;
-            p.id="price"
+              p.innerText=` $ ${product.price} `;
+              p.id="price"
     
      // adds the add to cart button
         const addToCart=document.createElement("button")
-            addToCart.className="addCartBtn";
-            addToCart.innerText="ADD TO CART"
+              addToCart.className="addCartBtn";
+              addToCart.innerText="ADD TO CART"
         // event listener
-            addToCart.addEventListener("click",()=>{
-            postItemToCart();
+              addToCart.addEventListener("click",()=>{
+              postItemToCart();
             })
         createDiv.append(aTag,img,p,addToCart);
         mainContainer.append(createDiv);
@@ -151,10 +151,11 @@ function createCards(product)
 function renderComments(comment) // // commentInput.value passed
 { 
         const commentSection=document.createElement("li");
-            commentSection.className="comment-box";
-            commentSection.innerHTML=`📝${comment}`;
-         const comUL=document.createElement("ul");
-            comUL.append(commentSection);
+              commentSection.className="comment-box";
+              commentSection.innerHTML=`📝${comment}`;
+              
+        const comUL=document.createElement("ul");
+              comUL.append(commentSection);
         mainContainer.append(comUL);
 }
 function fetchComments(product)// product.id is passed to compare
@@ -188,20 +189,20 @@ function deleteFromCart(ids) // passing card.id from delete button event listene
 function renderCart(cart)
 {
     const h2=document.createElement("h2");
-        h2.innerText=cart.title;
-        h2.className="cartAppear"
+          h2.innerText=cart.title;
+          h2.className="cartAppear"
 
     const img= document.createElement("img");
-        img.src=cart.img;
-        img.className="cartImage"
+          img.src=cart.img;
+          img.className="cartImage"
 
     const p= document.createElement("p");
-        p.innerText=`$ ${cart.price}`
-        p.className="cartAppear"
+          p.innerText=`$ ${cart.price}`
+          p.className="cartAppear"
     
     const deleteButton=document.createElement("button");
-        deleteButton.innerText="delete item from cart"
-        deleteButton.className="deleteItem"
+          deleteButton.innerText="delete item from cart"
+          deleteButton.className="deleteItem"
 
     deleteButton.addEventListener("click",()=>
     {   
@@ -213,31 +214,34 @@ function renderCart(cart)
     })
 
     const checkout=document.createElement("button");
-        checkout.innerText="Place order for this Item";
-        checkout.className="placeOrder"
+          checkout.innerText="Place order for this Item";
+          checkout.className="placeOrder"
 
         checkout.addEventListener("click",()=>{
 
             mainContainer.innerHTML="";
             const order=document.createElement("h3");
-                order.innerText="YAYYY!! Your order has been placed!!"
+                  order.innerText="YAYYY!! Your order has been placed!!"
+
             const h2=document.createElement("h2");
-                h2.innerText="Thank you for shopping with us!"
+                  h2.innerText="Thank you for shopping with us!"
+
             const backToCart=document.createElement("button");
-                backToCart.innerText="Back to cart"
-                backToCart.className="backToCart"
-                backToCart.addEventListener("click",()=>
-                {
+                  backToCart.innerText="Back to cart"
+                  backToCart.className="backToCart"
+                  backToCart.addEventListener("click",()=>
+                  {
                     mainContainer.innerHTML="";
                     fetch(`http://localhost:3000/cart`)
                     .then(resp=>resp.json())
                     .then(cart=>cart.map(cart=>renderCart(cart)))
-                })
+                  })
             const contShop=document.createElement("button");
-                contShop.innerText="Continue Shopping";
-                contShop.className="placeOrder"           // used the same class as for place the order button to style it same
-                contShop.addEventListener("click",()=>{
-                mainContainer.innerHTML="";
+                  contShop.innerText="Continue Shopping";
+                  contShop.className="placeOrder" 
+                            // used the same class as for place the order button to style it same
+                  contShop.addEventListener("click",()=>{
+                  mainContainer.innerHTML="";
                 fetchAll();
                 });
             mainContainer.append(order,h2,backToCart,contShop);
@@ -285,8 +289,7 @@ function search()
     })
 }
 search();
-// created individual fetch requests to fetch only certain brands
-// multiple fetch requests for fetching individual brands 
+
 function fetchMakeup(brand)
 {
     fetch(`${baseURL}${brand}`)
