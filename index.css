@@ -19,6 +19,12 @@ div.card {
   height: 12rem;
   width: auto;
 }
+.imgonA {
+  justify-self: center;
+  height: 12rem;
+  width: auto;
+  margin-left: 50px;
+}
 img:hover {
   opacity: 2;
 }
@@ -165,12 +171,18 @@ nav {
   text-shadow: honeydew;
   color: aliceblue;
 }
+.addCartBtn:hover {
+  box-shadow: 0 0 2em rgba(0, 0, 0, 0.1), inset 0 0 1em rgba(0, 0, 0, 0.1);
+  background-color: rgb(121, 81, 121);
+}
 .deleteItem {
   background-color: indianred;
   color: aliceblue;
   height: 30px;
   justify-content: space-around;
   align-items: center;
+  border-radius: 12px;
+  margin-left: 50px;
 }
 .placeOrder {
   background-color: rgb(70, 110, 29);
@@ -179,11 +191,13 @@ nav {
   position: absolute;
   justify-content: space-around;
   align-items: center;
+  border-radius: 12px;
 }
 .cartImage {
   height: 70px;
   width: 70px;
   align-items: center;
+  margin-left: 50px;
 }
 #cart {
   /* margin-top: 5px; */
@@ -213,4 +227,24 @@ nav {
   width: 45px;
   height: 30px;
   size: 30px; */
+}
+.cartAppear {
+  margin-left: 50px;
+}
+#price {
+  text-shadow: 0 0 2px rgb(121, 81, 121);
+}
+#additem {
+  border: 2px solid #4caf50;
+  background-color: rgb(243, 203, 116);
+}
+.submit-review {
+  border: 2px solid rgb(84, 84, 230);
+  background-color: darkslategrey;
+  color: aliceblue;
+}
+.backToCart {
+  border-radius: 12px;
+  height: 30px;
+  background-color: rgb(243, 203, 116);
 }
