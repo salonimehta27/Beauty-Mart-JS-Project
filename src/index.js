@@ -3,23 +3,24 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 const baseURL="https://makeup-api.herokuapp.com/api/v1/products.json?brand=";
 // created an array of brands that i wanted to fetch from the api and used map to iterate over the array and fetch the brands
-const brands=["nyx","maybelline","clinique","milani"];
+const mainContainer=document.getElementById("main-container");
 
 function fetchAll()
 {   
-        brands.map((brands)=>{
-            fetch(`${baseURL}${brands}`)
-            .then(resp=>resp.json()).then(product=>displayData(product))
+    const brands=["nyx","maybelline","clinique","milani"];
+         brands.map((brands)=>{
+         fetch(`${baseURL}${brands}`)
+        .then(resp=>resp.json())
+        .then(product=>displayData(product))
         })
-}
-fetchAll();
+}fetchAll();
+
 function displayData(product)
 {
         product.map(element => {
         createCards(element)
     });
 }
-const mainContainer=document.getElementById("main-container");
 
 function createCards(product)
 {
@@ -60,6 +61,7 @@ function createCards(product)
         const name=document.createElement("h2")
               name.innerText=product.name;
               name.className="cartAppear"
+              name.id="nameTitle"
 
         const img=document.createElement("img");
               img.src=product.image_link;
@@ -87,6 +89,7 @@ function createCards(product)
         const productType=document.createElement("p")
               productType.innerText=`Product Type: ${product.product_type.toUpperCase()}`;
               productType.className="cartAppear";
+
             /// creates a form for reviews 
         const commentForm=document.createElement("form")
               commentForm.id="commentInput";
@@ -167,14 +170,31 @@ function fetchComments(product)// product.id is passed to compare
             renderComments(x.review)}
     }))
 }
-function cart()
-{   
+function cart(){
+    
+    // mainContainer.innerHTML=""
+    console.log(mainContainer.firstChild)
+    if(mainContainer.firstChild==="null")
+    {
+        alert("cart is empty")
+    }
+// {    mainContainer.innerHTML="";
+//     console.log(mainContainer.firstChild)
+//     const message=document.createElement("h2");
+//         message.innerText="Cart is Empty"
+//     if(mainContainer.firstChild==="null")
+//     {  
+//         mainContainer.append(message);
+//     }
     mainContainer.innerHTML="";
     fetch(`http://localhost:3000/cart`)
     .then(resp=>resp.json())
     .then(cart=>cart.map(cart=>renderCart(cart)))
 }
-document.getElementById("cart").addEventListener("click",cart)
+document.getElementById("cart").addEventListener("click",()=>
+{
+    cart();
+})
 
 function deleteFromCart(ids) // passing card.id from delete button event listener
 {
@@ -186,11 +206,13 @@ function deleteFromCart(ids) // passing card.id from delete button event listene
          }
         }).then(resp=>resp.json())
 }
+
 function renderCart(cart)
-{
+{   
     const h2=document.createElement("h2");
           h2.innerText=cart.title;
           h2.className="cartAppear"
+          h2.id="titleId"
 
     const img= document.createElement("img");
           img.src=cart.img;
@@ -199,6 +221,7 @@ function renderCart(cart)
     const p= document.createElement("p");
           p.innerText=`$ ${cart.price}`
           p.className="cartAppear"
+          p.id="price";
     
     const deleteButton=document.createElement("button");
           deleteButton.innerText="delete item from cart"

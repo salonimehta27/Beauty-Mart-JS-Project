@@ -1,6 +1,7 @@
 body {
   background-color: white;
   margin: 0;
+  line-height: 1;
 }
 div.card {
   text-align: center;
@@ -34,7 +35,7 @@ a {
   display: block;
 }
 div #main-container {
-  padding: 1rem;
+  /* padding: 1rem; */
   width: stretch;
   height: auto;
 
@@ -198,6 +199,7 @@ nav {
   width: 70px;
   align-items: center;
   margin-left: 50px;
+  border: 3px solid #555;
 }
 #cart {
   /* margin-top: 5px; */
@@ -247,4 +249,12 @@ nav {
   border-radius: 12px;
   height: 30px;
   background-color: rgb(243, 203, 116);
+}
+#titleId {
+  color: purple;
+  text-shadow: 2px purple;
+  font-size: small;
+}
+#nameTitle {
+  color: purple;
 }
