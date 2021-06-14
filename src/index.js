@@ -282,51 +282,6 @@ function renderCart(cart)
     mainContainer.append(h2,img,p,deleteButton,checkout);
 }
 
-// this function is solely for search button, in this case our search button is an submit button.
-// so a user can either click the button or just hit enter 
-
-function search()
-{
-    // event listener on the form itself
-    document.getElementById("searchbar").addEventListener("submit",(e)=>
-    {
-        e.preventDefault();
-        //console.log(brands);
-        const val=e.target.lastElementChild.value.toString(); // value of this is input text in search field 
-        // console.log(val);
-
-        if(val.toLowerCase()==="nyx")
-        {   
-            fetchMakeup("nyx");
-        }
-        else if(val.toLowerCase()==="milani")
-        {
-            fetchMakeup("milani")
-        }
-        else if(val.toLowerCase()==="clinique")
-        { 
-            fetchMakeup("clinique");
-        }
-        else if(val.toLowerCase()==="maybelline")
-        {
-            fetchMakeup("maybelline");
-        }
-        else 
-        {
-             alert("Please enter correct Brand name");
-        }
-        e.target.reset();
-        mainContainer.innerHTML="";
-    })
-}
-search();
-
-function fetchMakeup(brand)
-{
-    fetch(`${baseURL}${brand}`)
-    .then(resp=>resp.json()).then(product=>displayData(product))
-}
-
 document.getElementById("drp").addEventListener("click",()=>
 {  
    //we gonna access the classlist active and toggle it
@@ -346,15 +301,15 @@ this.onclick = function(event) {
   }
 function dropDown()  {
     const productType=["lipstick","blush","bronzer","eyeliner","eyeshadow","foundation"];
-    for(let i=0;i<productType.length;i++)
-    {
-        const productids=document.getElementById(productType[i])
-        console.log(productids);
-        productids.addEventListener("click",()=>{
-            mainContainer.innerHTML="";
-            productCategory(productType[i])
-        })
-    }
+        for(let i=0; i<productType.length; i++)
+        {
+            const productids=document.getElementById(productType[i])
+            //console.log(productids);
+            productids.addEventListener("click",()=>{
+                mainContainer.innerHTML="";
+                productCategory(productType[i])
+            })
+        }
 }dropDown();
 
 function productCategory(productType)
@@ -364,5 +319,39 @@ function productCategory(productType)
     fetch(`${baseURL}${brands}&product_type=${productType}`)
     .then(resp=>resp.json()).then(product=>displayData(product))
 })}
+// this function is solely for search button, in this case our search button is an submit button.
+// so a user can either click the button or just hit enter 
+
+function search()
+{
+    // event listener on the form itself
+    document.getElementById("searchbar").addEventListener("submit",(e)=>
+    {
+        e.preventDefault();
+        //console.log(brands);
+        const val=e.target.lastElementChild.value.toString(); // value of this is input text in search field 
+        // console.log(val);
+        switch(val.toLowerCase()){
+            case "nyx": fetchMakeup("nyx");
+            break;
+            case "milani":fetchMakeup("milani");
+            break;
+            case "clinique":fetchMakeup("clinique");
+            break;
+            case "maybelline":fetchMakeup("maybelline");
+            break;
+            default: alert("Please enter correct Brand name");
+        }
+        e.target.reset();
+        mainContainer.innerHTML="";
+    })
+}
+search();
+function fetchMakeup(brand)
+{
+    fetch(`${baseURL}${brand}`)
+    .then(resp=>resp.json()).then(product=>displayData(product))
+}
+
 })
  
