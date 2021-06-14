@@ -41,32 +41,6 @@ div #main-container {
 
   opacity: 0.8;
 }
-/* .navbar {
-  width: stretch;
-  height: 50px;
-  background-color: thistle;
-  display: inline-grid;
-} */
-/* nav a {
-  display: block;
-  color: rgb(121, 81, 121);
-  text-align: center;
-  padding: 50px 10px;
-  text-decoration: none;
-  font-size: 30px;
-  font-weight: bold;
-}
-nav a:hover {
-  color: #29a074;
-} */
-/* .search {
-  float: right;
-  padding-right: 20px;
-}
-.searchBtn {
-  float: right;
-  padding-right: 20px;
-} */
 
 #btnClick {
   padding: 0;
@@ -75,30 +49,14 @@ nav a:hover {
   font-size: 20px;
   height: 30px;
 }
-/* #searchId:hover {
-  background-color:wheat
-} */
+
 #searchId {
   width: 150px;
   height: 30px;
   margin-top: 40px;
   border: 0.4em solid rgb(121, 81, 121);
+  border-radius: 12px;
 }
-/* #searchbar {
-  float: right;
-  letter-spacing: 0px;
-} */
-/* nav {
-  position: sticky;
-  top: 0;
-  display: flex;
-  flex-wrap: wrap;
-  min-height: 8vh;
-  justify-content: space-between;
-  padding: 1.5rem 2rem;
-  background-color: thistle;
-  transition: top 500ms ease-in-out;
-} */
 nav.scroll-up,
 nav:focus-within {
   top: 0;
@@ -111,21 +69,10 @@ nav.scroll-down {
   display: flex;
   margin: 0 -1em;
 }
-
-/* .links a {
-  display: inline-block;
-  margin: 0 1em;
-} */
-/* nav a {
-  color: #0f0f0f;
-  text-decoration: none;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-} */
 .logo img {
   width: 200px;
   height: 90px;
+  margin-left: 30px;
 }
 .logo {
   font-weight: bold;
@@ -144,26 +91,6 @@ nav {
   font-family: Arial, Helvetica, sans-serif;
   background-color: thistle;
 }
-/* .nav-links {
-  display: flex;
-  justify-content: space-around;
-  width: 20%;
-  float: right;
-  text-decoration: none;
-  letter-spacing: 3px;
-  font-size: 14px;
-} */
-/* .nav-links li {
-  list-style: none;
-} */
-/* .search-nav {
-  display: flex;
-  width: 20%;
-}
-
-.nav-links a {
-  text-decoration: none;
-} */
 .comment-box {
   display: block;
 }
@@ -219,6 +146,7 @@ nav {
   cursor: pointer;
   box-shadow: 0 0 0 rgba(0, 0, 0, 0.1), inset 0 0 0 rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin-right: 100px;
 }
 #cart:hover {
   box-shadow: 0 0 2em rgba(0, 0, 0, 0.1), inset 0 0 1em rgba(0, 0, 0, 0.1);
@@ -257,4 +185,59 @@ nav {
 }
 #nameTitle {
   color: purple;
+}
+.dropbtn {
+  background-color: rgb(121, 81, 121);
+  color: white;
+  padding: 13px;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  margin-left: 550px;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #29a074;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-left: 550px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+  display: block;
+}
+.cartEmpty {
+  color: rgb(224, 93, 159);
+  margin-left: 50px;
 }

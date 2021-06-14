@@ -5,7 +5,7 @@ const baseURL="https://makeup-api.herokuapp.com/api/v1/products.json?brand=";
 // created an array of brands that i wanted to fetch from the api and used map to iterate over the array and fetch the brands
 const mainContainer=document.getElementById("main-container");
 
-function fetchAll()
+function fetchSelectedBrands()
 {   
     const brands=["nyx","maybelline","clinique","milani"];
          brands.map((brands)=>{
@@ -13,7 +13,7 @@ function fetchAll()
         .then(resp=>resp.json())
         .then(product=>displayData(product))
         })
-}fetchAll();
+}fetchSelectedBrands();
 
 function displayData(product)
 {
@@ -171,30 +171,24 @@ function fetchComments(product)// product.id is passed to compare
     }))
 }
 function cart(){
-    
-    // mainContainer.innerHTML=""
-    console.log(mainContainer.firstChild)
-    if(mainContainer.firstChild==="null")
-    {
-        alert("cart is empty")
-    }
-// {    mainContainer.innerHTML="";
-//     console.log(mainContainer.firstChild)
-//     const message=document.createElement("h2");
-//         message.innerText="Cart is Empty"
-//     if(mainContainer.firstChild==="null")
-//     {  
-//         mainContainer.append(message);
-//     }
+
     mainContainer.innerHTML="";
     fetch(`http://localhost:3000/cart`)
     .then(resp=>resp.json())
-    .then(cart=>cart.map(cart=>renderCart(cart)))
+    .then(cart=>{
+       if(cart.length===0)
+       {
+        const message=document.createElement("h2");
+              message.className="cartEmpty"
+              message.innerText="Cart is Empty, please add an item to the cart ❤️"
+         mainContainer.append(message);
+       }
+       else{
+        cart.map(cart=>renderCart(cart))
+       }
+    })
 }
-document.getElementById("cart").addEventListener("click",()=>
-{
-    cart();
-})
+document.getElementById("cart").addEventListener("click",cart);
 
 function deleteFromCart(ids) // passing card.id from delete button event listener
 {
@@ -222,19 +216,34 @@ function renderCart(cart)
           p.innerText=`$ ${cart.price}`
           p.className="cartAppear"
           p.id="price";
-    
+
+    function callCart()
+    {
+        mainContainer.innerHTML="";
+            fetch(`http://localhost:3000/cart`)
+            .then(resp=>resp.json())
+            .then(cart=>{
+            if(cart.length===0)
+            {
+                const message=document.createElement("h2");
+                      message.className="cartEmpty"
+                      message.innerText="Cart is Empty, please add an item to the cart ❤️"
+                mainContainer.append(message);
+            }
+            else{
+                cart.map(cart=>renderCart(cart))
+            }
+            })
+    }
     const deleteButton=document.createElement("button");
           deleteButton.innerText="delete item from cart"
           deleteButton.className="deleteItem"
 
-    deleteButton.addEventListener("click",()=>
-    {   
-        deleteFromCart(cart.id);
-        mainContainer.innerHTML="";
-        fetch(`http://localhost:3000/cart`)
-        .then(resp=>resp.json())
-        .then(cart=>cart.map(cart=>renderCart(cart)))
-    })
+          deleteButton.addEventListener("click",()=>
+            {   
+                deleteFromCart(cart.id);
+                callCart();
+            })
 
     const checkout=document.createElement("button");
           checkout.innerText="Place order for this Item";
@@ -254,10 +263,7 @@ function renderCart(cart)
                   backToCart.className="backToCart"
                   backToCart.addEventListener("click",()=>
                   {
-                    mainContainer.innerHTML="";
-                    fetch(`http://localhost:3000/cart`)
-                    .then(resp=>resp.json())
-                    .then(cart=>cart.map(cart=>renderCart(cart)))
+                    callCart();
                   })
             const contShop=document.createElement("button");
                   contShop.innerText="Continue Shopping";
@@ -265,7 +271,7 @@ function renderCart(cart)
                             // used the same class as for place the order button to style it same
                   contShop.addEventListener("click",()=>{
                   mainContainer.innerHTML="";
-                fetchAll();
+                fetchSelectedBrands();
                 });
             mainContainer.append(order,h2,backToCart,contShop);
             const ids=cart.id;
@@ -318,4 +324,68 @@ function fetchMakeup(brand)
     fetch(`${baseURL}${brand}`)
     .then(resp=>resp.json()).then(product=>displayData(product))
 }
+
+document.getElementById("drp").addEventListener("click",()=>
+{  
+   //we gonna access the classlist active and toggle it
+    document.getElementById("myDropdown").classList.toggle("show")
 })
+// Close the dropdown menu if the user clicks outside of it
+this.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      let dropdowns = document.getElementsByClassName("dropdown-content");
+      for (let i = 0; i < dropdowns.length; i++) {
+        let openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+function dropDown()  {
+   
+    const lipstick=document.getElementById("lipstick")
+          lipstick.addEventListener("click",()=>{
+                mainContainer.innerHTML="";
+                productCategory("lipstick")
+            })
+    const blush=document.getElementById("blush")
+          blush.addEventListener("click",()=>{
+                mainContainer.innerHTML="";
+                productCategory("blush");
+            })
+    const bronzer=document.getElementById("bronzer");
+          bronzer.addEventListener("click",()=>{
+            mainContainer.innerHTML="";
+            productCategory("bronzer");
+          })
+    const eyeliner=document.getElementById("eyeliner")
+          eyeliner.addEventListener("click",()=>{
+              mainContainer.innerHTML="";
+              productCategory("eyeliner");
+          })
+    const eyeshadow=document.getElementById("eyeshadow")
+          eyeshadow.addEventListener("click",()=>{
+            mainContainer.innerHTML="";
+            productCategory("eyeshadow");
+          })
+    const foundation=document.getElementById("foundation")
+          foundation.addEventListener("click",()=>{
+            mainContainer.innerHTML="";
+            productCategory("foundation");
+          })
+    }dropDown();
+
+function productCategory(productType)
+{   
+    const brands=["nyx","maybelline","clinique","milani"];
+         brands.map((brands)=>{
+    fetch(`${baseURL}${brands}&product_type=${productType}`)
+    .then(resp=>resp.json()).then(product=>displayData(product))
+})}
+
+
+})
+// http://makeup-api.herokuapp.com/api/v1/products.json?brand=covergirl&product_type=lipstick
+ 
