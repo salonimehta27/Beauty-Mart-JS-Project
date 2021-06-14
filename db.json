@@ -74,7 +74,18 @@
       "review": "colors stays for long hours",
       "productId": 97,
       "id": 30
+    },
+    {
+      "review": "pretty Color",
+      "productId": 436,
+      "id": 31
     }
   ],
-  "cart": []
+  "cart": [],
+  "likes": [
+    {
+      "like": "",
+      "productId": ""
+    }
+  ]
 }

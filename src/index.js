@@ -344,40 +344,18 @@ this.onclick = function(event) {
       }
     }
   }
-
 function dropDown()  {
-   
-    const lipstick=document.getElementById("lipstick")
-          lipstick.addEventListener("click",()=>{
-                mainContainer.innerHTML="";
-                productCategory("lipstick")
-            })
-    const blush=document.getElementById("blush")
-          blush.addEventListener("click",()=>{
-                mainContainer.innerHTML="";
-                productCategory("blush");
-            })
-    const bronzer=document.getElementById("bronzer");
-          bronzer.addEventListener("click",()=>{
+    const productType=["lipstick","blush","bronzer","eyeliner","eyeshadow","foundation"];
+    for(let i=0;i<productType.length;i++)
+    {
+        const productids=document.getElementById(productType[i])
+        console.log(productids);
+        productids.addEventListener("click",()=>{
             mainContainer.innerHTML="";
-            productCategory("bronzer");
-          })
-    const eyeliner=document.getElementById("eyeliner")
-          eyeliner.addEventListener("click",()=>{
-              mainContainer.innerHTML="";
-              productCategory("eyeliner");
-          })
-    const eyeshadow=document.getElementById("eyeshadow")
-          eyeshadow.addEventListener("click",()=>{
-            mainContainer.innerHTML="";
-            productCategory("eyeshadow");
-          })
-    const foundation=document.getElementById("foundation")
-          foundation.addEventListener("click",()=>{
-            mainContainer.innerHTML="";
-            productCategory("foundation");
-          })
-    }dropDown();
+            productCategory(productType[i])
+        })
+    }
+}dropDown();
 
 function productCategory(productType)
 {   
@@ -386,8 +364,5 @@ function productCategory(productType)
     fetch(`${baseURL}${brands}&product_type=${productType}`)
     .then(resp=>resp.json()).then(product=>displayData(product))
 })}
-
-
 })
-// http://makeup-api.herokuapp.com/api/v1/products.json?brand=covergirl&product_type=lipstick
  
