@@ -151,6 +151,7 @@ function createCards(product)
         mainContainer.append(createDiv);
   
 }
+
 function renderComments(comment) // // commentInput.value passed
 { 
         const commentSection=document.createElement("li");
@@ -161,6 +162,7 @@ function renderComments(comment) // // commentInput.value passed
               comUL.append(commentSection);
         mainContainer.append(comUL);
 }
+
 function fetchComments(product)// product.id is passed to compare
 {  
         fetch(`http://localhost:3000/reviews/`)
@@ -170,6 +172,7 @@ function fetchComments(product)// product.id is passed to compare
             renderComments(x.review)}
     }))
 }
+
 function cart(){
 
     mainContainer.innerHTML="";
@@ -228,7 +231,7 @@ function renderCart(cart)
                 const message=document.createElement("h2");
                       message.className="cartEmpty"
                       message.innerText="Cart is Empty, please add an item to the cart ❤️"
-                mainContainer.append(message);
+                      mainContainer.append(message);
             }
             else{
                 cart.map(cart=>renderCart(cart))
@@ -291,14 +294,15 @@ document.getElementById("drp").addEventListener("click",()=>
 this.onclick = function(event) {
     if (!event.target.matches('.dropbtn')) {
       let dropdowns = document.getElementsByClassName("dropdown-content");
-      for (let i = 0; i < dropdowns.length; i++) {
-        let openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
+        for (let i = 0; i < dropdowns.length; i++) {
+             let openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+                }
         }
-      }
     }
-  }
+}
+
 function dropDown()  {
     const productType=["lipstick","blush","bronzer","eyeliner","eyeshadow","foundation"];
         for(let i=0; i<productType.length; i++)
@@ -315,10 +319,13 @@ function dropDown()  {
 function productCategory(productType)
 {   
     const brands=["nyx","maybelline","clinique","milani"];
-         brands.map((brands)=>{
-    fetch(`${baseURL}${brands}&product_type=${productType}`)
-    .then(resp=>resp.json()).then(product=>displayData(product))
-})}
+
+          brands.map((brands)=>{
+            fetch(`${baseURL}${brands}&product_type=${productType}`)
+            .then(resp=>resp.json())
+            .then(product=>displayData(product))
+            })
+}
 // this function is solely for search button, in this case our search button is an submit button.
 // so a user can either click the button or just hit enter 
 
@@ -341,6 +348,7 @@ function search()
             case "maybelline":fetchMakeup("maybelline");
             break;
             default: alert("Please enter correct Brand name");
+                    fetchSelectedBrands();
         }
         e.target.reset();
         mainContainer.innerHTML="";
@@ -352,6 +360,5 @@ function fetchMakeup(brand)
     fetch(`${baseURL}${brand}`)
     .then(resp=>resp.json()).then(product=>displayData(product))
 }
-
 })
  
