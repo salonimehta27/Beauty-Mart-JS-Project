@@ -253,10 +253,12 @@ function renderCart(cart)
 
             mainContainer.innerHTML="";
             const order=document.createElement("h3");
-                  order.innerText="YAYYY!! Your order has been placed!!"
+                  order.innerText="YAYYY!! Your order has been placed!!";
+                  order.className="cartEmpty";
 
             const h2=document.createElement("h2");
                   h2.innerText="Thank you for shopping with us!"
+                  h2.className="cartEmpty";
 
             const backToCart=document.createElement("button");
                   backToCart.innerText="Back to cart"
