@@ -173,7 +173,7 @@ function fetchComments(product)// product.id is passed to compare
     }))
 }
 
-function cart(){
+function callCart(){
 
     mainContainer.innerHTML="";
     fetch(`http://localhost:3000/cart`)
@@ -191,7 +191,7 @@ function cart(){
        }
     })
 }
-document.getElementById("cart").addEventListener("click",cart);
+document.getElementById("cart").addEventListener("click",callCart);
 
 function deleteFromCart(ids) // passing card.id from delete button event listener
 {
@@ -220,24 +220,6 @@ function renderCart(cart)
           p.className="cartAppear"
           p.id="price";
 
-    function callCart()
-    {
-        mainContainer.innerHTML="";
-            fetch(`http://localhost:3000/cart`)
-            .then(resp=>resp.json())
-            .then(cart=>{
-            if(cart.length===0)
-            {
-                const message=document.createElement("h2");
-                      message.className="cartEmpty"
-                      message.innerText="Cart is Empty, please add an item to the cart ❤️"
-                      mainContainer.append(message);
-            }
-            else{
-                cart.map(cart=>renderCart(cart))
-            }
-            })
-    }
     const deleteButton=document.createElement("button");
           deleteButton.innerText="delete item from cart"
           deleteButton.className="deleteItem"
