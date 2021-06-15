@@ -28,3 +28,4 @@ This application uses Free PUBLIC API for makeup products and also uses JSON Ser
 ## How it looks when the items get added to cart in JSON SERVER
 
 ![cart](images/cartdbjson.png)
+
