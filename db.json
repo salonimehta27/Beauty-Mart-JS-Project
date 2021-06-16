@@ -111,13 +111,5 @@
       "id": 44
     }
   ],
-  "cart": [
-    {
-      "title": "Milani Baked Blush",
-      "productId": 435,
-      "img": "https://d3t32hsnjxo7q6.cloudfront.net/i/4ae353dcae46e9b97c4915566fc9190a_ra,w158,h184_pa,w158,h184.png",
-      "price": "7.99",
-      "id": 1
-    }
-  ]
+  "cart": []
 }
