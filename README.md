@@ -22,10 +22,37 @@ This application uses Free PUBLIC API for makeup products and also uses JSON Ser
 
 ```json-server --watch db.json```
 
+## Resources 
+
 ### Free Public API
 [API LINK](https://makeup-api.herokuapp.com/api/v1/products.json)
 
-## How it looks when the items get added to cart in JSON SERVER
+### REST API
+#### To GET OR POST Reviews
+http://localhost:3000/reviews
+#### To POST, GET OR DELETE from cart
+http://localhost:3000/cart
+
+## FETCH REQUESTS USED
+* `GET`,
+* `POST`,
+* `DELETE`
+
+## How it looks when the items get added to cart in JSON SERVER 
 
 ![cart](images/cartdbjson.png)
 
+## Roadmap
+* Add quanities to the cart 
+* Add one checkout for all items instead of only individual items
+* Add likes to the products and store them in JSON server
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+## Contact
+
+Email- Salonimehta2127@gmail.com 
+
+Project Link: https://github.com/salonimehta27/JS-PROJECT
