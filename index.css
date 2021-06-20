@@ -1,6 +1,6 @@
 body {
   background-color: white;
-  margin: 0;
+  margin: 0px;
   line-height: 1;
 }
 div.card {
@@ -86,6 +86,7 @@ nav.scroll-down {
 }
 nav {
   display: flex;
+  overflow: hidden;
   justify-content: space-around;
   align-items: center;
   min-height: 8vh;
