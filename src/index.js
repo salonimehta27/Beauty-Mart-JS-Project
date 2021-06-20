@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         aTag.innerHTML = product.name;
 
         aTag.addEventListener("click", () => {
-            anchor(product);
+            productInfoOnClick(product);
         })
 
         const img = document.createElement("img");
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         img.className = "product-image"
 
         img.addEventListener("click", () => {
-            anchor(product);
+            productInfoOnClick(product);
         })
 
         const p = document.createElement("p")
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }).then(resp => resp.json())
     }
 
-    function anchor(product) {
+    function productInfoOnClick(product) {
         mainContainer.innerHTML = "";
 
         const name = document.createElement("h2")
