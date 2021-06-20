@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
             createCards(element)
         });
     }
+
     function createCards(product) {
 
         const createDiv = document.createElement("div");
