@@ -245,3 +245,6 @@ nav {
   color: rgb(224, 93, 159);
   margin-left: 50px;
 }
+#mainImg{
+  cursor: pointer;
+}

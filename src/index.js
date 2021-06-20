@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
             createCards(element)
         });
     }
-
     function createCards(product) {
+
         const createDiv = document.createElement("div");
         createDiv.className = "card"
 
@@ -30,101 +30,19 @@ document.addEventListener("DOMContentLoaded", () => {
         aTag.id = "aId"
         aTag.innerHTML = product.name;
 
-        function postItemToCart() {
-            alert("item has been added to the cart");
-            fetch(`http://localhost:3000/cart`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "accept": "application/json"
-                },
-                body: JSON.stringify({
-                    "title": product.name,
-                    "productId": product.id,
-                    "img": product.image_link,
-                    "price": product.price
-                })
-            }).then(resp => resp.json())
-        }
-
         aTag.addEventListener("click", () => {
-            mainContainer.innerHTML = "";
-
-            const name = document.createElement("h2")
-            name.innerText = product.name;
-            name.className = "cartAppear"
-            name.id = "nameTitle"
-
-            const img = document.createElement("img");
-            img.src = product.image_link;
-            img.className = "imgonA"
-
-            const pr = document.createElement("p")
-            pr.innerText = ` $ ${product.price} `;
-            pr.id = "price"
-            pr.className = "cartAppear"
-
-            const addItem = document.createElement("button");
-            addItem.innerText = "Add this item to cart"
-            addItem.className = "cartAppear"
-            addItem.id = "additem"
-
-            addItem.addEventListener("click", () => {
-                postItemToCart()
-            })
-
-            const p = document.createElement('p');
-            p.innerHTML = `Product description: <br> <br>${product.description}`;
-            p.className = "cartAppear";
-
-            const productType = document.createElement("p")
-            productType.innerText = `Product Type: ${product.product_type.toUpperCase()}`;
-            productType.className = "cartAppear";
-
-            /// creates a form for reviews 
-            const commentForm = document.createElement("form")
-            commentForm.id = "commentInput";
-
-            const commentInput = document.createElement("input")
-            commentInput.id = "enter-comment";
-            commentInput.type = "text";
-            commentInput.className = "cartAppear";
-            commentInput.placeholder = "Enter your Review";
-
-            const submitReview = document.createElement("button");
-            submitReview.innerText = "Submit Review";
-            submitReview.className = "submit-review";
-
-            commentForm.append(commentInput, submitReview);
-            commentForm.addEventListener("submit", (e) => {
-                e.preventDefault();
-                renderComments(commentInput.value);
-                fetch(`http://localhost:3000/reviews/`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "accept": "application/json"
-                    },
-                    body: JSON.stringify({
-                        "review": commentInput.value,
-                        "productId": product.id
-                    })
-                }).then(resp => resp.json())
-                e.target.reset();
-            })
-            fetchComments(product.id);
-            // reviews.map(x=>x.productId===product.id)
-
-            mainContainer.append(name, img, pr, addItem, p, productType, commentForm);
+            anchor(product);
         })
-        /// aTag ends here with the link listener
-        ///************************************ 
 
         const img = document.createElement("img");
         img.src = product.image_link;
+        img.id = "mainImg"
         img.className = "product-image"
 
-        // adds the product price
+        img.addEventListener("click", () => {
+            anchor(product);
+        })
+
         const p = document.createElement("p")
         p.innerText = ` $ ${product.price} `;
         p.id = "price"
@@ -135,11 +53,99 @@ document.addEventListener("DOMContentLoaded", () => {
         addToCart.innerText = "ADD TO CART"
 
         addToCart.addEventListener("click", () => {
-            postItemToCart();
+            postItemToCart(product);
         })
         createDiv.append(aTag, img, p, addToCart);
         mainContainer.append(createDiv);
 
+    }
+
+    function postItemToCart(product) {
+        alert("item has been added to the cart");
+        fetch(`http://localhost:3000/cart`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "accept": "application/json"
+            },
+            body: JSON.stringify({
+                "title": product.name,
+                "productId": product.id,
+                "img": product.image_link,
+                "price": product.price
+            })
+        }).then(resp => resp.json())
+    }
+
+    function anchor(product) {
+        mainContainer.innerHTML = "";
+
+        const name = document.createElement("h2")
+        name.innerText = product.name;
+        name.className = "cartAppear"
+        name.id = "nameTitle"
+
+        const img = document.createElement("img");
+        img.src = product.image_link;
+        img.className = "imgonA"
+
+        const pr = document.createElement("p")
+        pr.innerText = ` $ ${product.price} `;
+        pr.id = "price"
+        pr.className = "cartAppear"
+
+        const addItem = document.createElement("button");
+        addItem.innerText = "Add this item to cart"
+        addItem.className = "cartAppear"
+        addItem.id = "additem"
+
+        addItem.addEventListener("click", () => {
+            postItemToCart(product)
+        })
+
+        const p = document.createElement('p');
+        p.innerHTML = `Product description: <br> <br>${product.description}`;
+        p.className = "cartAppear";
+
+        const productType = document.createElement("p")
+        productType.innerText = `Product Type: ${product.product_type.toUpperCase()}`;
+        productType.className = "cartAppear";
+
+        /// creates a form for reviews 
+        const commentForm = document.createElement("form")
+        commentForm.id = "commentInput";
+
+        const commentInput = document.createElement("input")
+        commentInput.id = "enter-comment";
+        commentInput.type = "text";
+        commentInput.className = "cartAppear";
+        commentInput.placeholder = "Enter your Review";
+
+        const submitReview = document.createElement("button");
+        submitReview.innerText = "Submit Review";
+        submitReview.className = "submit-review";
+
+        commentForm.append(commentInput, submitReview);
+        commentForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            renderComments(commentInput.value);
+            fetch(`http://localhost:3000/reviews/`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "accept": "application/json"
+                },
+                body: JSON.stringify({
+                    "review": commentInput.value,
+                    "productId": product.id
+                })
+            }).then(resp => resp.json())
+            e.target.reset();
+        })
+        fetchComments(product.id);
+        // reviews.map(x=>x.productId===product.id)
+
+        mainContainer.append(name, img, pr, addItem, p, productType, commentForm);
     }
 
     function renderComments(comment) // // commentInput.value passed
@@ -294,8 +300,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(product => displayData(product))
         })
     }
-    // this function is solely for search button, in this case our search button is an submit button.
-    // so a user can either click the button or just hit enter 
 
     function search() {
         // event listener on the form itself
@@ -321,6 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
     search();
+
     function fetchMakeup(brand) {
         fetch(`${baseURL}${brand}`)
             .then(resp => resp.json())
