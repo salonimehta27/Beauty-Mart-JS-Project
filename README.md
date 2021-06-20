@@ -55,4 +55,4 @@ Contributions are what make the open source community such an amazing place to b
 
 Email- Salonimehta2127@gmail.com 
 
-Project Link: https://github.com/salonimehta27/JS-PROJECT
+Project Link: https://github.com/salonimehta27/Beauty-Mart-JS-Project
