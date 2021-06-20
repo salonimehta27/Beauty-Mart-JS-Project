@@ -114,15 +114,20 @@
       "review": "pretty Color",
       "productId": 488,
       "id": 45
+    },
+    {
+      "review": "stays on all day! love it!",
+      "productId": 199,
+      "id": 46
     }
   ],
   "cart": [
     {
-      "title": "Maybelline Facestudio Master Contour Kit",
-      "productId": 477,
-      "img": "https://d3t32hsnjxo7q6.cloudfront.net/i/4f731de249cbd4cb819ea7f5f4cfb5c3_ra,w158,h184_pa,w158,h184.png",
-      "price": "15.99",
-      "id": 2
+      "title": "Milani Color Statement Lipliner",
+      "productId": 393,
+      "img": "https://d3t32hsnjxo7q6.cloudfront.net/i/386b5089c2fac40c4b01e0a17dc7a1f0_ra,w158,h184_pa,w158,h184.jpeg",
+      "price": "3.99",
+      "id": 1
     }
   ]
 }
