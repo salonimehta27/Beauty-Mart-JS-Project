@@ -118,25 +118,11 @@
   ],
   "cart": [
     {
-      "title": "Maybelline Fit Me Bronzer",
-      "productId": 488,
-      "img": "https://d3t32hsnjxo7q6.cloudfront.net/i/d4f7d82b4858c622bb3c1cef07b9d850_ra,w158,h184_pa,w158,h184.png",
-      "price": "10.29",
-      "id": 1
-    },
-    {
       "title": "Maybelline Facestudio Master Contour Kit",
       "productId": 477,
       "img": "https://d3t32hsnjxo7q6.cloudfront.net/i/4f731de249cbd4cb819ea7f5f4cfb5c3_ra,w158,h184_pa,w158,h184.png",
       "price": "15.99",
       "id": 2
-    },
-    {
-      "title": "Milani Supreme Kohl Kajal Eyeliner",
-      "productId": 258,
-      "img": "https://d3t32hsnjxo7q6.cloudfront.net/i/0e085149c3fbedd0aa6661c6b3d143cf_ra,w158,h184_pa,w158,h184.jpg",
-      "price": "8.99",
-      "id": 3
     }
   ]
 }

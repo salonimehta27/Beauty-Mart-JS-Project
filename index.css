@@ -86,7 +86,6 @@ nav.scroll-down {
 }
 nav {
   display: flex;
-  overflow: hidden;
   justify-content: space-around;
   align-items: center;
   min-height: 8vh;
