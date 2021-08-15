@@ -114,6 +114,21 @@
       "review": "stays on all day! love it!",
       "productId": 199,
       "id": 46
+    },
+    {
+      "review": "very pretty color",
+      "productId": 468,
+      "id": 47
+    },
+    {
+      "review": "perfect color!",
+      "productId": 258,
+      "id": 48
+    },
+    {
+      "review": "nice",
+      "productId": 436,
+      "id": 49
     }
   ],
   "cart": []

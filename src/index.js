@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function postItemToCart(product) {
         alert("item has been added to the cart");
-        fetch(`http://localhost:3000/cart`, {
+        fetch(`https://beauty-mart.herokuapp.com/cart`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
         commentForm.addEventListener("submit", (e) => {
             e.preventDefault();
             renderComments(commentInput.value);
-            fetch(`http://localhost:3000/reviews/`, {
+            fetch(`https://beauty-mart.herokuapp.com/reviews`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function fetchComments(product)// product.id is passed to compare
     {
-        fetch(`http://localhost:3000/reviews/`)
+        fetch(`https://beauty-mart.herokuapp.com/reviews`)
             .then(resp => resp.json())
             .then(review => review.map((x) => {
                 if (x.productId === product) {
@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function callCart() {
 
         mainContainer.innerHTML = "";
-        fetch(`http://localhost:3000/cart`)
+        fetch(`https://beauty-mart.herokuapp.com/cart`)
             .then(resp => resp.json())
             .then(cart => {
                 // checks the db.json cart if it's empty to show the message
@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function deleteFromCart(ids) // passing card.id from delete button event listener
     {
         //console.log(cart);
-        fetch(`http://localhost:3000/cart/${ids}`, {
+        fetch(`https://beauty-mart.herokuapp.com/cart/${ids}`, {
             method: "DELETE",
             headers: {
                 "content-type": 'application/json'
@@ -305,27 +305,48 @@ document.addEventListener("DOMContentLoaded", () => {
     function search() {
         // event listener on the form itself
         document.getElementById("searchbar").addEventListener("submit", (e) => {
-            e.preventDefault();
-            //console.log(brands);
-            const val = e.target.lastElementChild.value.toString(); // value of this is input text in search field 
-            // console.log(val);
-            switch (val.toLowerCase()) {
-                case "nyx": fetchMakeup("nyx");
-                    break;
-                case "milani": fetchMakeup("milani");
-                    break;
-                case "clinique": fetchMakeup("clinique");
-                    break;
-                case "maybelline": fetchMakeup("maybelline");
-                    break;
-                default: alert("Please enter correct Brand name");
-                    fetchSelectedBrands();
-            }
-            e.target.reset();
-            mainContainer.innerHTML = "";
+            findMakeup(e);
+            // e.preventDefault();
+            // //console.log(brands);
+            // const val = e.target.lastElementChild.value.toString(); // value of this is input text in search field 
+            // // console.log(val);
+            // switch (val.toLowerCase()) {
+            //     case "nyx": fetchMakeup("nyx");
+            //         break;
+            //     case "milani": fetchMakeup("milani");
+            //         break;
+            //     case "clinique": fetchMakeup("clinique");
+            //         break;
+            //     case "maybelline": fetchMakeup("maybelline");
+            //         break;
+            //     default: alert("Please enter correct Brand name");
+            //         fetchSelectedBrands();
+            // }
+            // e.target.reset();
+            // mainContainer.innerHTML = "";
         })
     }
     search();
+    function findMakeup(e) {
+        e.preventDefault();
+        //console.log(brands);
+        const val = e.target.lastElementChild.value.toString(); // value of this is input text in search field 
+        // console.log(val);
+        switch (val.toLowerCase()) {
+            case "nyx": fetchMakeup("nyx");
+                break;
+            case "milani": fetchMakeup("milani");
+                break;
+            case "clinique": fetchMakeup("clinique");
+                break;
+            case "maybelline": fetchMakeup("maybelline");
+                break;
+            default: alert("Please enter correct Brand name");
+                fetchSelectedBrands();
+        }
+        e.target.reset();
+        mainContainer.innerHTML = "";
+    }
 
     function fetchMakeup(brand) {
         fetch(`${baseURL}${brand}`)
